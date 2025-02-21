@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     return [
     {
         source: '/:path*',  // Match any path
-        destination: 'http://localhost:3000/:path*',
+        destination: 'http://localhost:8080/:path*',
+        
     },
     ];
   },

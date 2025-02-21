@@ -5,7 +5,7 @@ const cors = require('cors');
 const app: Express = express();
 
 app.use(cors({
-  origin: 'http://localhost:3001',  // Allow your Next.js client
+  origin: 'http://localhost:3000',  // Allow your Next.js client
   methods: ['GET', 'POST'], // Specify the allowed HTTP methods
 }));
 

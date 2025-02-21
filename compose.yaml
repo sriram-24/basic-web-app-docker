@@ -15,6 +15,7 @@ services:
   server:
     build: ./server/ 
     environment:
+      PORT: 8080
       DATABASE_HOST: db  
       DATABASE_PORT : 5432
       DATABASE_USER: test
@@ -23,9 +24,20 @@ services:
     depends_on:
       - db
     ports: 
-      - 3000:3000
+      - 8080:8080
     networks:
      - web-app
+
+  client:
+    build: ./client/ 
+    environment:
+      NEXT_PUBLIC_SERVER_HOST: http://localhost:8080/
+    depends_on:
+      - server
+    ports:
+      - 3000:3000
+    networks:
+        - web-app
 
 networks:
   web-app:
