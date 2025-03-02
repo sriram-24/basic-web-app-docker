@@ -1,23 +1,15 @@
 import express, { Express, Request, Response } from "express";
-import { db } from "./db/db";
 import "dotenv/config";
+import notesRoute from './routes/notes'
 const cors = require('cors');
 const app: Express = express();
-
+app.use(express.json())
 app.use(cors({
   origin: 'http://localhost:3000',  // Allow your Next.js client
   methods: ['GET', 'POST'], // Specify the allowed HTTP methods
 }));
 
-app.get("/", async (_req: Request, res: Response) => {
-    try {
-        const result = await db.query("SELECT * FROM USERS");
-        res.json(result.rows);
-    } catch (error) {
-        console.log("Error occured", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
+app.use("/notes",notesRoute);
 
 const PORT = process.env.PORT || 3000;
 
