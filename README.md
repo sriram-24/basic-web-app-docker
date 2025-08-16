@@ -19,4 +19,11 @@ The application contains 3 components
 - Database (postgres)
 - Server (express)
 - Client (nextjs)
- 
+
+### Issues
+
+Any issues related to installation or documentation raise a [bug](https://github.com/sriram-24/basic-web-app-docker/issues)
+
+### Contributing
+
+Fork the repo and create a pull request. Contributions and suggestions are welcomed :heart:
