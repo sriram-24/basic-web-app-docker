@@ -11,7 +11,7 @@ services:
       - web-app
     volumes:
       - web-server-db-volume:/var/lib/postgresql/data
-
+    restart: always
   server:
     build: ./server/ 
     environment:
@@ -38,6 +38,16 @@ services:
       - 3000:3000
     networks:
         - web-app
+  # restores the sample volume backup 
+  backup_restore:
+    image: alpine
+    volumes:
+    - web-server-db-volume:/volume
+    - .:/backup 
+    entrypoint: ["tar","xzf","/backup/web-server-db-volume.tar.gz","-C", "/volume"]
+    depends_on:
+      - db 
+    restart: "no"
 
 networks:
   web-app:
@@ -45,4 +55,4 @@ networks:
 
 volumes:
   web-server-db-volume:
-    external: true
+    name: web-server-db-volume
