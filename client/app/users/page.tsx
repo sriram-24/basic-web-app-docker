@@ -7,7 +7,7 @@ function  Users() {
     useEffect(()=>{ 
         async function getUsers(){
             const host: string = process.env.NEXT_PUBLIC_SERVER_HOST || ""
-            const res = await fetch(host);
+            const res = await fetch(host+"notes");
             const data = await res.json();
             if(data) {
                 setUsers(data)
