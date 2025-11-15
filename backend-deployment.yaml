@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: backend-deployment 
+
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: backend-nodejs 
+  template:
+    metadata: 
+      labels: 
+        app: backend-nodejs
+    spec:
+      containers: 
+      - name: next-js 
+        image: web-app-basic-server
+        imagePullPolicy: IfNotPresent
+        ports: 
+        - containerPort: 3000
+
