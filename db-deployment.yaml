@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment 
+
+metadata: 
+  name: db-deployment 
+
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: db-backend 
+  template: 
+    metadata: 
+      labels: 
+        app: db-backend 
+    spec: 
+      containers: 
+      - name: postgres-backend
+        image: postgres
+        env: 
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-pass
+              key: POSTGRES_PASSWORD
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 5432 

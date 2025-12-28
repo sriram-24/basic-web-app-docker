@@ -19,4 +19,18 @@ spec:
         imagePullPolicy: IfNotPresent
         ports: 
         - containerPort: 3000
-
+        env:
+        - name: DATABASE_HOST 
+          value: "db-service"
+        - name: DATABASE_USER
+          value: "postgres"
+        - name: DATABASE_PASSWORD
+          value: "test"
+        - name: DATABASE_NAME
+          value: "notes"
+#PORT=8080
+#DATABASE_HOST="localhost"
+#DATABASE_PORT=5432
+#DATABASE_USER="dev"
+#DATABASE_PASSWORD="dev"
+#DATABASE_NAME="notes"
