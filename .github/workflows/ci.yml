@@ -10,11 +10,22 @@ jobs:
 
     steps: 
       - uses: actions/checkout@v4
-
-      - name: Install Node
+      - name: Setup nodejs
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: "npm"
 
-      - run: npm ci 
+      - name: Install and test server
+      - run:
+          cd server 
+          npm ci 
+          #npm run lint  
+      
+      - name: Install and test client
+      - run: 
+          cd client 
+          npm ci 
+          npm run lint
+          
 
