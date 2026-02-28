@@ -17,12 +17,15 @@ jobs:
           cache: "npm"
 
       - name: Install and test server
+        working-directory: server
         run:
           cd server 
           npm ci 
           #npm run lint  
       
-      - name: Install and test client
+      - name: Install and test client 
+        working-directory: client
+        run:
         run: 
           cd client 
           npm ci 
