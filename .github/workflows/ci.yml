@@ -25,7 +25,6 @@ jobs:
       
       - name: Install and test client 
         working-directory: client
-        run:
         run: 
           cd client 
           npm ci 
