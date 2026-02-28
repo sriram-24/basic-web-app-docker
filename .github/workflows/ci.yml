@@ -19,12 +19,12 @@ jobs:
       - name: Install and test server
         working-directory: server
         run:
-          cd server && npm ci 
+          npm ci 
           #npm run lint  
       
       - name: Install and test client 
         working-directory: client
         run: 
-          cd client && npm ci && npm run lint
+          npm ci && npm run lint
           
 
