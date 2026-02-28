@@ -3,7 +3,6 @@ name: web-app-CI
 on: 
   push:
     branches: [ setup-github-actions ]
-  pull_requests:
 
 jobs:
   build:
