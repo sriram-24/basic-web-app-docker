@@ -28,22 +28,25 @@ router.post("/new",(req : Request,
     res.status(200).json({name:name})
 })
 
-router.post("/populatesampledata", async (req: Request, res: Response): any => {
+router.post("/populatesampledata", async (req: Request, res: Response) => {
     try{
         const {password} = req.body;
-        if(password !== process.env.SAMPLEDATA_PASS) return res.status(403).json({
-            message: "Access forbidden.",
-            status: 403
-        })
+        if(password !== process.env.SAMPLEDATA_PASS){
+            res.status(403).json({
+                message: "Access forbidden.",
+                status: 403
+            })
+            return;
+        }
         
         await populateSampleData()
-        return res.status(200).json({
+        res.status(200).json({
             message: "Successful.",
             status: 200
         })
     }catch(error){
         console.log("Error occured", error)
-        return res.status(500).json({
+        res.status(500).json({
             message: "Error ocurred: Failed to create data",
             status:500
         })
